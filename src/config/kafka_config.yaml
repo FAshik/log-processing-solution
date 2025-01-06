@@ -1,0 +1,5 @@
+bootstrap_servers: "localhost:30303"
+logs_topic: "logs"
+logs_group_id: "logs_group"
+processed_logs_topic: "processed_logs"
+offset_reset: "earliest"

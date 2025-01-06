@@ -1,0 +1,43 @@
+extraConfigYaml:
+  num.partitions: 1
+  default.replication.factor: 1
+  offsets.topic.replication.factor: 1
+  transaction.state.log.replication.factor: 1
+  transaction.state.log.min.isr: 1
+  auto.create.topics.enable: true
+
+controller:
+  replicaCount: 1  
+
+listeners:
+  client:
+    protocol: 'PLAINTEXT'
+  controller:
+    protocol: 'PLAINTEXT'
+  interbroker:
+    protocol: 'PLAINTEXT'
+  external:
+    protocol: 'PLAINTEXT'
+  advertisedListeners: CLIENT://localhost:30303,INTERNAL://kafka-controller-0.kafka-controller-headless.kafka.svc.cluster.local:9094
+
+service:
+  type: NodePort
+  nodePorts:
+    client: "30303"
+
+kraft:
+  clusterId: 'test'
+
+provisioning:
+  enabled: true  
+  topics: 
+  - name: test
+    partitions: 1
+    replicationFactor: 1
+    config:
+      partition: 0
+      leader: 0
+      replicas: 0
+      isr: 0
+      max.message.bytes: 64000
+      flush.messages: 1

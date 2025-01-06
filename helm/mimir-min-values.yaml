@@ -1,0 +1,69 @@
+imagePullSecrets: []
+defaultStorageClass: ""
+storageClass: ""
+
+security:
+  allowInsecureImages: false
+
+compatibility:
+  openshift: {}
+
+# minio:
+#   enabled: false
+
+memcachedmetadata:
+  enabled: false
+
+memcachedindexqueries:
+  enabled: false
+
+memcachedchunks:
+  enabled: false
+
+# Configure the storage backend to use the filesystem
+config:
+  storage:
+    backend: "filesystem"
+    filesystem:
+      dir: "/data"
+
+ingester:
+  replicas: 1
+  resourcesPreset: "nano"
+  resources: {}
+
+distributor:
+  replicas: 1
+  resourcesPreset: "nano"
+  resources: {}
+
+querier:
+  replicas: 1
+  resourcesPreset: "nano"
+  resources: {}
+
+queryFrontend:
+  replicas: 1
+  resourcesPreset: "nano"
+  resources: {}
+
+compactor:
+  replicas: 1
+  resourcesPreset: "nano"
+  resources: {}
+
+storeGateway:
+  replicas: 1
+  resourcesPreset: "nano"
+  resources: {}
+
+persistence:
+  enabled: true
+  storageClass: ""
+  size: 1Gi
+  accessModes:
+    - ReadWriteOnce
+
+service:
+  type: ClusterIP
+  port: 9009
